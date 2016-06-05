@@ -10,14 +10,4 @@ gulp.task('scripts', function() {
 	.pipe(gulp.dest('views/js/'));
 });
 
-gulp.task('styles', function() {
-	gulp.src('views/css/bootstrap-grid.css')
-	.pipe(uglifycss({
-		"maxLineLen": 80,
-      "uglyComments": true
-  }))
-	.pipe(rename('bootstrap-grid.min.css'))
-	.pipe(gulp.dest('views/css/'));
-});
-
-gulp.task('default',['scripts', 'styles']);
+gulp.task('default',['scripts']);
