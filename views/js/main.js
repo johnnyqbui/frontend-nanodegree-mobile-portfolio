@@ -517,8 +517,8 @@ function updatePositions() {
   }
   // Used CSS transform to improve cpu performance
   for (i = 0; i < items.length; i++) {
-    transformLeft = items[i].basicLeft + 100 * value[i];
-    items[i].style.transform = 'translateX('+ transformLeft + 'px)';
+    translation = items[i].basicLeft + 100 * value[i];
+    items[i].style.transform = 'translateX('+ translation + 'px)';
   }
 
   scroll = false;

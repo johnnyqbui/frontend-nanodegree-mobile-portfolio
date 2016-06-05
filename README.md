@@ -24,11 +24,11 @@ This is a required project for a Udacity course. This project aims to optimize m
 
 #### Gulp:
 1. Installed gulp globally:
-	```
+	```sh
 	npm install --global gulp-cli
 	```
 2. Installed gulp and gulp-uglify to project development dependencies:
-	```
+	```sh
 	npm install --save-dev gulp
 	npm install --save-dev gulp-uglify
 	```
@@ -58,7 +58,7 @@ This is a required project for a Udacity course. This project aims to optimize m
 	1. The link will take you to index.html
 	2. Navigate by clicking on "Cam's pizzeria" to take you to pizza.html
 
-<br>OR</br>
+**OR**
 
 * Download/Clone repository and open index.html
 
