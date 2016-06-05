@@ -24,15 +24,20 @@ This is a required project for a Udacity course. This project aims to optimize m
 
 #### Gulp:
 1. Installed gulp globally:
-	```sh
+
+	```
 	npm install --global gulp-cli
 	```
+
 2. Installed gulp and gulp-uglify to project development dependencies:
-	```sh
+
+	```
 	npm install --save-dev gulp
 	npm install --save-dev gulp-uglify
 	```
+
 3. Created gulpfile.js with required plugins at root of project:
+
 	```js
 	var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
@@ -47,6 +52,7 @@ This is a required project for a Udacity course. This project aims to optimize m
 
 	gulp.task('default',['scripts']);
 	```
+
 #### Gulp plugin found here:
 * [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
 
