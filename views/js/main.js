@@ -433,11 +433,11 @@ var resizePizzas = function(size) {
           break;
         default:
           console.log("bug in sizeSwitcher");
-      }
+        }
       var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
       for (var i = 0; i < randomPizzas.length; i++) {
-      randomPizzas[i].style.width = newwidth + "%";
-    }
+        randomPizzas[i].style.width = newwidth + "%";
+      }
   }
 
   changePizzaSizes(size);
@@ -481,7 +481,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function slidingPizzas() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 22; i++) {
+  for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza-min.png";
@@ -496,6 +496,8 @@ updatePositions();
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
+
+var scroll = false;
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
@@ -513,9 +515,13 @@ function updatePositions() {
     phase = Math.sin(scrolledTop + (i % 5));
     value.push(phase);
   }
+  // Used CSS transform to improve cpu performance
   for (i = 0; i < items.length; i++) {
-    items[i].style.left = items[i].basicLeft + 100 * value[i] + 'px';
+    transformLeft = items[i].basicLeft + 100 * value[i];
+    items[i].style.transform = 'translateX('+ transformLeft + 'px)';
   }
+
+  scroll = false;
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -528,7 +534,15 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+window.addEventListener('scroll', updatedScroll);
+
+// requestAnimationFrame for smooth 60 fps
+function updatedScroll() {
+  if (!scroll) {
+    window.requestAnimationFrame(updatePositions);
+    scroll = true;
+  }
+}
 
 // Generates the sliding pizzas when the page loads.
 // document.addEventListener('DOMContentLoaded', function() {
